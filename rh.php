@@ -179,7 +179,7 @@ session_start();
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                         <tr>
-                                            <th>Modifier</th>
+                                            <th>Modifier  </th>
                                             <th>Matricule</th>
                                             <th>Nom & Prénom</th>
                                             <th>Fonction</th>
@@ -212,8 +212,8 @@ session_start();
                                     }
                                     for ($i=0; $i<count($pres); $i++){?>
                                     <tr>
-                                    <td>&emsp;<a href='edit.php?operatrice=<?php echo ($pres[$i]['matricule']) ?>'><img src="./img/edit.png" alt="icone" width="18mm" height="18mm"></a>
-                                    &emsp;<a href='deleteconf.php?operatrice=<?php echo ($pres[$i]['matricule']) ?>'><img src="./img/delete.png" alt="icone" width="18mm" height="18mm"></a></td>
+                                    <td> <a href='edit.php?operatrice=<?php echo ($pres[$i]['matricule']) ?>'><img src="./img/edit.png" alt="icone" width="17mm" height="17mm"></a>
+                                    &emsp; <a href='deleteconf.php?operatrice=<?php echo ($pres[$i]['matricule']) ?>'><img src="./img/delete.png" alt="icone" width="17mm" height="17mm"></a></td>
                                     <td><?php echo ($pres[$i]['matricule']);?></td>
                                     <td><?php echo ($pres[$i]['first_name'].' '.$pres[$i]['last_name']);?></td>
                                     <td><?php echo ($pres[$i]['qualification']);?></td>

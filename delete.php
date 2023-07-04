@@ -1,24 +1,41 @@
 <?php
 require_once './php/config.php';
 
-// if(isset($_POST['Bouton'])) {
-//   // Récupère les données du formulaire
-//   $id = $_POST['id'];
-//   $of = $_POST['of_num'];
-//   $model = $_POST['model'];
-//   $pack = $_POST['pack_num'];
-//   $opcode = $_POST['operation_code'];
-//   $designation = $_POST['designation'];
+if(isset($_POST['Bouton'])) {
+  // Récupère les données du formulaire
+  $id = $_POST['id'];
+  $model_id = $_POST['model_id'];
+  $model = $_POST['model'];
+  $opcode = $_POST['operation_code'];
+  $designation = $_POST['designation'];
 
-//   $sql = "DELETE FROM `p3_gamme` WHERE `model`='$model' AND `pack_num`='$pack' AND `of_num`='$of' AND `designation`='$designation' AND `operation_code`=$opcode";
-//   $result = $con->query($sql);
+  $sql="SELECT * FROM `prod__gamme`
+  INNER JOIN `init__model` ON `prod__gamme`.`model_id`= `init__model`.`id`
+  WHERE `prod__gamme`.`model_id`= '$model_id'
+  ORDER BY `operation_num` DESC LIMIT 1";
+  $rslt=$con->query($sql);
 
-//   $sql = "DELETE FROM `p4_pack_operation` WHERE `model`='$model' AND  `pack_num`='$pack' AND `of_num`='$of'AND `designation`='$designation' AND `operation_code`=$opcode";
-//   $result = $con->query($sql);
-   
-//   // Redirige l'utilisateur vers la page précédente
-//   header('Location: allgamme.php');
-// }
+  $p3 = [];
+  while ($item = $rslt->fetch_assoc())
+  {
+      $p3[] = $item;
+  }
+
+  if ($p3[0]['operation_num']<$opcode){
+
+    $sql = "DELETE FROM `prod__gamme` WHERE `operation_num`=$opcode AND `id`=$id AND `model_id`=$model_id";
+    $result = $con->query($sql);
+
+    $sql="UPDATE `prod__gamme` SET `operation_num`=`operation_num`-1 WHERE `operation_num`>=$opcode";
+    $rslt= $con->query($sql);
+  }
+  // else {
+  //   $sql = "DELETE FROM `prod__gamme` WHERE `operation_num`=$opcode AND `id`=$id AND `model_id`=$model_id";
+  //   $result = $con->query($sql);
+  // }
+  // Redirige l'utilisateur vers la page précédente
+  header ('Location: gameequilibrage.php?model_id=' . $model_id );
+}
 
 if(isset($_POST['BoutonOf'])) {
   // Récupère les données du formulaire
@@ -85,10 +102,15 @@ if(isset($_POST['Supoperation'])) {
         $modelid[] = $item3;
     }
 
+    $idmodel= $modelid[0]['id']; 
+
   $sql1 = "DELETE FROM `prod__gamme`  WHERE `id`=$id";
   $result1 = $con->query($sql1);
+
+  $sql="UPDATE `prod__gamme` SET `operation_num`=`operation_num`-1 WHERE `operation_num`>=$opcode";
+    $rslt= $con->query($sql);
   
   // Redirige l'utilisateur vers la page précédente
-  header('Location: equilibrage.php');
+  header('Location: gammeequilibrage.php?model_id='. $idmodel);
 }
 ?>

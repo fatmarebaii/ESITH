@@ -188,6 +188,7 @@ session_start();
                                             <th>Nombre des piéces défaillantes </th>
                                             <th>Défauts</th>
                                             <th>Date de controle</th>
+                                            <th>Heure de controle</th>
                                         </tr>
                                     </thead>
                                     <!-- <tfoot>
@@ -241,8 +242,8 @@ session_start();
                                                     ?>
                                                 </td>
 
-                                                <td><?php echo $pack[$i]['cur_date'];
-                                                } ?></td>
+                                                <td><?php echo $pack[$i]['cur_date']; ?></td>
+                                                <td><?php echo $pack[$i]['cur_time'];} ?></td>
                                             </tr>
 
                                     </tbody>

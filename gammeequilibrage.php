@@ -232,8 +232,8 @@ session_start();
                                 while($i<count($p3_gamme1)){
                                    ?>
                                     <tr>
-                                    <td><a href='edit.php?modele_id=<?php echo ($p3_gamme1[$i]["model_id"]) ?>&operationcode=<?php echo ($p3_gamme1[$i]["operation_num"]) ?>&id=<?php echo ($p3_gamme1[$i]["id"]) ?>'><img src="./img/edit.png" alt="icone" width="20mm" height="20mm"></a></td>
-                                    <!-- &emsp;<a href='deleteconf.php?modele_id=<?php // echo ($p3_gamme1[$i]["model_id"]) ?>&operationcode=<?php // echo ($p3_gamme1[$i]["operation_num"]) ?>&idop=<?php // echo ($p3_gamme1[$i]["id"]) ?>'><img src="./img/delete.png" alt="icone" width="15mm" height="15mm"></a></td> -->
+                                    <td><a href='edit.php?modele_id=<?php echo ($p3_gamme1[$i]["model_id"]) ?>&operationcode=<?php echo ($p3_gamme1[$i]["operation_num"]) ?>&id=<?php echo ($p3_gamme1[$i]["id"]) ?>'><img src="./img/edit.png" alt="icone" width="20mm" height="20mm"></a>
+                                    &emsp;<a href='deleteconf.php?modele_id=<?php echo ($p3_gamme1[$i]["model_id"]) ?>&operationcode=<?php echo ($p3_gamme1[$i]["operation_num"]) ?>&idop=<?php echo ($p3_gamme1[$i]["id"]) ?>'><img src="./img/delete.png" alt="icone" width="15mm" height="15mm"></a></td>
                                         <td><?php echo $p3_gamme1[$i]['operation_num'];?></td>
                                         <td><?php echo $p3_gamme1[$i]['designation'];?></td>
                                         <td><?php echo $p3_gamme1[$i]['unit_time'];?></td>

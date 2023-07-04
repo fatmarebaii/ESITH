@@ -197,9 +197,8 @@ session_start();
                                 <tbody>
                                 <?php
                                     require_once './php/config.php';
-                                    $sql="SELECT `init__prod_line`.`prod_line`, `prod__implantation`.`machine_id`, `init__machine`.`designation`, `prod__implantation`.`smartbox`, `init__smartbox`.`position`
+                                    $sql="SELECT `init__prod_line`.`prod_line`, `prod__implantation`.`machine_id`, `prod__implantation`.`smartbox`, `init__smartbox`.`position`
                                     FROM `prod__implantation` 
-                                    INNER JOIN `init__machine` ON `prod__implantation`.`machine_id`=`init__machine`.`machine_id`
                                     INNER JOIN `init__prod_line` ON `prod__implantation`.`prod_line_id`= `init__prod_line`.`id` 
                                     INNER JOIN `init__smartbox` ON `prod__implantation`.`smartbox`= `init__smartbox`.`smartbox`";
                                     $presence = mysqli_query($con, $sql);
@@ -212,7 +211,7 @@ session_start();
                                         <tr>
                                     <td><?php echo ($pres[$i]['prod_line']);?></td>
                                     <td><?php echo ($pres[$i]['machine_id']);?></td>
-                                    <td><?php echo ($pres[$i]['designation']);?></td>
+                                    <td><?php echo ("");?></td>
                                     <td><?php echo ($pres[$i]['smartbox']);?></td>
                                     <td><?php echo ($pres[$i]['position']);}?></td>
                                 </tbody>

@@ -207,7 +207,9 @@
                                                 }
                                                 $ienc++;
                                             }
-                                            echo($qencours-($qfab-1));?> 
+                                            if(($qencours - ($qfab - 1))<0){echo 0; }
+                                            else {
+                                            echo ($qencours - ($qfab - 1));} ?> 
                                     </div>
                                 </div>
                             </div>
@@ -245,8 +247,8 @@
                                     <div class="h2 font-weight-bolder text-gray-900" style="text-align:center" id="fab"><?php 
                                     
                                     echo ($qfab-1);
-
-                                    ?></div>
+                                    ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

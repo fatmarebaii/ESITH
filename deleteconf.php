@@ -179,10 +179,12 @@
                         if (isset($_GET["model"]) || isset($_GET["operation_code"]) || isset($GET["pack_num"])) {
                         $model=$_GET["model"];
                         $opcode=$_GET["operation_code"];
-                        $pack=$_GET["pack_num"];
+                        $idop=$_GET["idop"];
                         
                         // récupérer les données de l'enregistrement à partir de la base de données
-                        $sql = "SELECT * FROM `p3_gamme` WHERE model='$model' AND operation_code='$opcode' AND pack_num='$pack'";
+                        $sql = "SELECT * FROM `prod__gamme`
+                        INNER JOIN `init__model` ON `prod__gamme`.`model_id`= `init__model`.`id` 
+                         WHERE model_id='$model' AND operation_num='$opcode' AND id=$idop";
                         $result = $con->query($sql);
                         if ($result->num_rows > 0) {
                             // afficher un formulaire pour modifier les données de l'enregistrement
@@ -194,16 +196,11 @@
 
                             <!-- <label class="col ml-2">ID:</label> -->
                             <input type="hidden" name="id" readonly="readonly" value="<?php echo $row['id']; ?>"><br>
+                            <input type="hidden" name="model_id" readonly="readonly" value="<?php echo $row['model_id']; ?>"><br>
                             
                             <label class="col ml-2"><br>Modèle:</label>
                             <input type="text" name="model" readonly="readonly" class="form-control ml-2" value="<?php echo $row['model']; ?>"><br>
-                            
-                            <label class="col ml-2">Réference de l'OF:</label>
-                            <input type="text" name="of_num" class="form-control ml-2" readonly="readonly" value="<?php echo $row['of_num']; ?>"><br>
-                            
-                            <label class="col ml-2">Numéro de paquet:</label>
-                            <textarea name="pack_num" class="form-control ml-2" readonly="readonly" ><?php echo $row['pack_num']; ?></textarea><br>
-                            
+
                             <label class="col ml-2">Code de l'opération:</label>
                             <textarea name="operation_code" readonly="readonly" class="form-control ml-2"><?php echo $row['operation_code']; ?></textarea><br>
                             

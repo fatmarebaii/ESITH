@@ -248,7 +248,7 @@ session_start();
                                                     } 
                                                     echo count($packet); ?></td>
 
-                                                <td><?php $query = "SELECT MAX(CAST(operation_num AS INT)) AS op_num FROM prod__pack_operation WHERE model ='$model'";
+                                                <td><?php $query = "SELECT MAX(CAST(operation_num AS SIGNED)) AS op_num FROM prod__pack_operation WHERE model ='$model'";
                                                     $rsl = $con->query($query);
                                                     $pac = [];
                                                     while ($item = $rsl->fetch_assoc()) {

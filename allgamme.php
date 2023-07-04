@@ -190,7 +190,7 @@ session_start();
                                             <th>Quantité par heure</th>
                                             <th>Machine</th>
                                             <th>Digitex</th>
-                                            <th>Date d'importation </th>
+                                            <!-- <th>Date d'importation </th> -->
                                         </tr>
                                     </thead>
                                     <!-- <tfoot>
@@ -241,8 +241,8 @@ session_start();
                                         <td><?php echo ($gamme_all[$l]['unit_time']);?></td>
                                         <td><?php echo ($gamme_all[$l]['qte_h']);?></td>
                                         <td><?php echo ($gamme_all[$l]['machine_id']);?></td>
-                                        <td><?php echo ($gamme_all[$l]['smartbox']);?></td>
-                                        <td><?php echo ($gamme_all[$l]['import_dt']);}?></td>
+                                        <td><?php echo ($gamme_all[$l]['smartbox']);} ?></td>
+                                        <!-- <td><?php // echo ($gamme_all[$l]['import_dt']);?></td> -->
                                     </tr>
 
                                 </tbody>

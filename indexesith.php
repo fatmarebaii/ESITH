@@ -337,7 +337,9 @@ require_once './php/config.php';
                                                                                                                 }
                                                                                                                 $ienc++;
                                                                                                             }
-                                                                                                            echo ($qencours - ($qfab - 1)); ?> </div>
+                                                                                                            if(($qencours - ($qfab - 1))<0){echo 0; }
+                                                                                                            else {
+                                                                                                            echo ($qencours - ($qfab - 1));}  ?> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -426,19 +428,27 @@ require_once './php/config.php';
                                                 Nombre des opératrices présentes
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="op1">
-                                                <?php $queryP = "SELECT 
-                                                    (COUNT(CASE WHEN t1.`p_state` = 1 THEN 1 END) - COUNT(CASE WHEN t1.`p_state` = 0 THEN 1 END)) AS presence
-                                                FROM
-                                                (SELECT * FROM prod__presence WHERE
-                                                `cur_date`=CURRENT_DATE GROUP BY `operator`) t1
-                                                WHERE
-                                                t1.`cur_date`=CURRENT_DATE AND t1.`prod_line`='$prodline'";
+                                                <?php $queryP = "SELECT
+    COUNT(*) AS presence
+FROM
+    prod__presence
+WHERE
+    p_state = 1 AND (cur_date, cur_time) IN(
+    SELECT
+        MAX(cur_date),
+        MAX(cur_time)
+    FROM
+        prod__presence
+    GROUP BY
+        operator
+) AND `prod_line` = '$prodline'";
                                                 $rsltP = $con->query($queryP);
                                                 $tabP = [];
                                                 while ($itemP = $rsltP->fetch_assoc()) {
                                                     $tabP[] = $itemP;
                                                 }
-                                                echo ($tabP[0]['presence']); ?></div>
+                                                echo ($tabP[0]['presence']); 
+                                                 ?></div>
                                         </div>
                                     </div>
                                 </div>

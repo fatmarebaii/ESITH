@@ -19,7 +19,7 @@ if(isset($_POST['Bouton'])) {
   $rslt2= $con->query($sql2);
 
   // Redirige l'utilisateur vers la page précédente
-  header('Location: allgamme.php');
+  header ('Location: gameequilibrage.php?model_id=' . $id );
 }
 
 if(isset($_POST['Bouton1'])) {
@@ -158,7 +158,7 @@ if(isset($_POST['Bouton7'])) {
   $rslt2= $con->query($sql2);
 
   // Redirige l'utilisateur vers la page précédente
-  header('Location: equilibrage.php');
+  header ('Location: gammeequilibrage.php?model_id=' . $model_id );
 }
 if(isset($_POST['Bouton8'])) {
   // Récupère les données du formulaire
